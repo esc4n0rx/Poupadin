@@ -3,7 +3,13 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { LottiePlayer } from "@/components/lottie-player" // Importando o player
+import dynamic from "next/dynamic"
+
+// Importar o LottiePlayer dinamicamente, desabilitando SSR
+const LottiePlayer = dynamic(() => import("@/components/lottie-player").then(mod => ({ default: mod.LottiePlayer })), {
+  ssr: false,
+  loading: () => <div className="w-48 h-48 mx-auto animate-pulse bg-gray-200 rounded-lg" />
+})
 
 export default function PasswordResetSuccessPage() {
   return (
