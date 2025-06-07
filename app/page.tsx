@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { TrendingUp } from "lucide-react"
+import Image from "next/image" // Importar o componente Image
 import Link from "next/link"
 import { AnimatedButton } from "@/components/animated-button"
 import { AnimatedCard } from "@/components/animated-card"
@@ -30,7 +30,8 @@ export default function HomePage() {
                 whileHover={{ rotate: 5, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <TrendingUp className="w-10 h-10 text-white" />
+                {/* Logo substituída aqui */}
+                <Image src="/logo.svg" alt="PoupaDin Logo" width={48} height={48} />
               </motion.div>
               <div>
                 <motion.h1
@@ -39,7 +40,7 @@ export default function HomePage() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  FinWise
+                  PoupaDin
                 </motion.h1>
                 <motion.p
                   className="text-sm text-gray-600 mt-2"

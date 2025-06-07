@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -11,15 +12,21 @@ import Link from "next/link"
 export default function NewPasswordPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const router = useRouter()
+
+  const handleChangePassword = () => {
+    // Lógica de redefinição de senha aqui
+    router.push("/password-reset-success")
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-400 to-emerald-500">
       {/* Header */}
       <div className="flex items-center justify-between p-4 pt-12">
-        <Link href="/forgot-password">
+        <Link href="/verify-token">
           <ArrowLeft className="w-6 h-6 text-white" />
         </Link>
-        <h1 className="text-xl font-semibold text-white">New Password</h1>
+        <h1 className="text-xl font-semibold text-white">Nova Senha</h1>
         <div className="w-6" />
       </div>
 
@@ -30,7 +37,7 @@ export default function NewPasswordPage() {
             <div className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="password" className="text-gray-700 font-medium">
-                  New Password
+                  Nova Senha
                 </Label>
                 <div className="relative">
                   <Input
@@ -51,7 +58,7 @@ export default function NewPasswordPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword" className="text-gray-700 font-medium">
-                  Confirm New Password
+                  Confirme a Nova Senha
                 </Label>
                 <div className="relative">
                   <Input
@@ -71,8 +78,11 @@ export default function NewPasswordPage() {
               </div>
             </div>
 
-            <Button className="w-full bg-emerald-400 hover:bg-emerald-500 text-white rounded-2xl h-12 text-base font-medium">
-              Change Password
+            <Button
+              onClick={handleChangePassword}
+              className="w-full bg-emerald-400 hover:bg-emerald-500 text-white rounded-2xl h-12 text-base font-medium"
+            >
+              Alterar Senha
             </Button>
           </CardContent>
         </Card>
